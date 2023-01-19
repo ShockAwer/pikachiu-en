@@ -1,9 +1,9 @@
-#! /usr/local/bin/perl
+#! /usr/bin/perl
 
 
 
 $body = '<body bgcolor="#007f7f" text="#ffffff" link="#eeffee" vlink="#dddddd" alink="#ff0000">';
-$bbstitle ="‚ ‚â‚µ‚¢—‚Ò‚©‚¿‚ã";
+$bbstitle ="Strange@Pikachu";
 $bbsurl = "pikachu.cgi";
 
 
@@ -11,7 +11,7 @@ $logdir = '../../pikachulog/';
 
 
 
-# · ƒT[ƒo‚ÌŒv‚ª‚¸‚ê‚Ä‚é‚â“ú–{ŠÔˆÈŠO‚É‚µ‚½‚¢‚Ég‚¤
+# æ™‚å·® ã‚µãƒ¼ãƒã®æ™‚è¨ˆãŒãšã‚Œã¦ã‚‹æ™‚ã‚„æ—¥æœ¬æ™‚é–“ä»¥å¤–ã«ã—ãŸã„æ™‚ã«ä½¿ã†
 $tim = 0;
 
 $\ = "\n";
@@ -26,15 +26,15 @@ $\ = "\n";
                $end--; 
 
 	print "Content-type: text/html\n\n";
-	print "<html><head><title>$bbstitle ‰ß‹ƒƒO</title></head>\n";
+	print "<html><head><title>$bbstitle log</title></head>\n";
 	print "$body\n";
 	print "<center>\n";
 
 	print "<form method=get action=\"$cgiurl\">";
 	print "<input type=hidden name=\"action\" value=\"$action\">";
-	print "<h2 align=center>$bbstitle‰ß‹ƒƒO</h2>";
+	print "<h2 align=center>$bbstitle Past Log</h2>";
 	print "<table border=1 width=50%>";
-	print "<tr><td width=50%>ƒtƒ@ƒCƒ‹–¼</td><td align=right width=20%>ƒTƒCƒY</td><td align=center width=30%>“ú•t</td></tr>";
+	print "<tr><td width=50%>ãƒ•ã‚¡ã‚¤ãƒ«å</td><td align=right width=20%>ã‚µã‚¤ã‚º</td><td align=center width=30%>æ—¥ä»˜</td></tr>";
 	foreach (0 .. $end) {
 		if (!($files[$_] eq "." or $files[$_] eq "..")) {
 			($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,$ctime,$blksize,$blocks) = stat "$logdir$files[$_]";
@@ -62,10 +62,10 @@ sub by_number {
 sub error {
 
 	$error = $_[0];
-	if    ($error == 0) { $errmsg = '‹L˜^ƒtƒ@ƒCƒ‹‚Ì“üo—Í‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B'; }
-	elsif ($error == 1) { $errmsg = "“Še‰æ–Ê‚Ì‚t‚q‚k‚ª<br>$cgiurl<br>" . 'ˆÈŠO‚©‚ç‚Ì“Še‚Í‚Å‚«‚Ü‚¹‚ñB'; }
-	elsif ($error == 2) { $errmsg = "ƒƒOƒtƒ@ƒCƒ‹‚ªƒI[ƒvƒ“‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B"; }
-	elsif ($error == 3) { $errmsg = "“ŠeŠÔŠu‚ª’Z‚·‚¬‚Ü‚·B$interval•b‚¨‘Ò‚¿‚­‚¾‚³‚¢B"; }
+	if    ($error == 0) { $errmsg = 'è¨˜éŒ²ãƒ•ã‚¡ã‚¤ãƒ«ã®å…¥å‡ºåŠ›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚'; }
+	elsif ($error == 1) { $errmsg = "æŠ•ç¨¿ç”»é¢ã®ï¼µï¼²ï¼¬ãŒ<br>$cgiurl<br>" . 'ä»¥å¤–ã‹ã‚‰ã®æŠ•ç¨¿ã¯ã§ãã¾ã›ã‚“ã€‚'; }
+	elsif ($error == 2) { $errmsg = "ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ªãƒ¼ãƒ—ãƒ³ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"; }
+	elsif ($error == 3) { $errmsg = "æŠ•ç¨¿é–“éš”ãŒçŸ­ã™ãã¾ã™ã€‚$intervalç§’ãŠå¾…ã¡ãã ã•ã„ã€‚"; }
 
 	print "Content-type: text/html\n\n";
 	print "<html><head><title>$title</title></head>\n";
